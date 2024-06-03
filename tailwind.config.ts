@@ -7,6 +7,15 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  safelist: [
+    'bg-gradient-to-r',
+    'from-yellow-50',
+    'to-pink-50',
+    'from-pink-50',
+    'to-blue-50',
+    'from-blue-50',
+    'to-yellow-50',
+  ],
   theme: {
     boxShadow: { DEFAULT: '0 1px 3px rgba(0,0,0, 0.2)' },
     extend: {
@@ -17,4 +26,5 @@ const config: Config = {
   },
   plugins: [],
 };
+
 export default config;
