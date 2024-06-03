@@ -11,7 +11,7 @@ export default function CategoryList() {
         >
           <div className='relative bg-slate-100 w-full h-96'>
             <Image
-              src='/cat.png'
+              src='https://images.pexels.com/photos/8148576/pexels-photo-8148576.jpeg'
               alt=''
               fill
               sizes='20vw'
