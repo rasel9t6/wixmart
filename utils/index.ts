@@ -24,3 +24,4 @@ export const slides = [
     bg: 'bg-gradient-to-r from-blue-50 to-yellow-50',
   },
 ];
+export const fullYear = new Date().getFullYear()
