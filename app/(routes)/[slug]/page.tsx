@@ -1,7 +1,6 @@
 import Add from '@/components/Add';
 import CustomizeProducts from '@/components/CustomizeProducts';
 import ProductImages from '@/components/ProductImages';
-import { Suspense } from 'react';
 
 export default function SinglePage() {
   return (
