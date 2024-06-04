@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { slides } from "@/utils";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { slides } from '@/utils';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function Slider() {
   const [current, setCurrent] = useState(0);
@@ -56,7 +56,7 @@ export default function Slider() {
         {slides.map((slide, index) => (
           <div
             className={`w-3 h-3  rounded-full ring-1 ring-gray-600 cursor-pointer flex items-center justify-center ${
-              current === index ? "scale-150" : ""
+              current === index ? 'scale-150' : ''
             }`}
             key={slide.id}
             onClick={() => setCurrent(index)}

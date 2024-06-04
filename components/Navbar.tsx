@@ -1,8 +1,8 @@
-import Link from "next/link";
-import Menu from "./Menu";
-import Logo from "./Logo";
-import SearchBar from "./SearchBar";
-import NavIcons from "./NavIcons";
+import Link from 'next/link';
+import Menu from './Menu';
+import Logo from './Logo';
+import SearchBar from './SearchBar';
+import NavIcons from './NavIcons';
 
 export default function Navbar() {
   return (
