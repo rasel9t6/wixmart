@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import Logo from './Logo';
-import { fullYear } from '@/utils';
+import Image from "next/image";
+import Link from "next/link";
+import Logo from "./Logo";
+import { fullYear } from "@/utils";
 
 export default function Footer() {
   return (

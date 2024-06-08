@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import CartModal from './CartModal';
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import CartModal from "./CartModal";
 
 export default function NavIcons() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -13,7 +13,7 @@ export default function NavIcons() {
   const isLoggedIn = false;
   const handleProfile = () => {
     if (!isLoggedIn) {
-      router.push('/login');
+      router.push("/login");
     }
     setIsProfileOpen((prev) => !prev);
   };

@@ -1,5 +1,6 @@
-import Footer from '@/components/Footer';
-import Navbar from '@/components/Navbar';
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import { WixClientProvider } from "@/context/WixContext";
 
 export default function AppLayout({
   children,
@@ -8,9 +9,11 @@ export default function AppLayout({
 }>) {
   return (
     <>
-      <Navbar />
-      {children}
-      <Footer />
+      <WixClientProvider>
+        <Navbar />
+        {children}
+        <Footer />
+      </WixClientProvider>
     </>
   );
 }

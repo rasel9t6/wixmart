@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function CartModal() {
   const cartItems = true;
@@ -13,7 +13,7 @@ export default function CartModal() {
         <div>Cart is Empty</div>
       ) : (
         <>
-          {' '}
+          {" "}
           <h1 className="text-xl text-center font-bold mb-2">Shopping Cart</h1>
           <div className="flex flex-col gap-8">
             <div className="flex gap-4">

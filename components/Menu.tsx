@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { useState } from 'react';
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function Menu() {
   const [open, setOpen] = useState(false);
@@ -15,7 +15,7 @@ export default function Menu() {
         height={28}
         className="cursor-pointer"
         onClick={() => setOpen((prev) => !prev)}
-      />{' '}
+      />{" "}
       {open && (
         <div className="absolute left-0 top-20 bg-black text-white w-full h-screen flex flex-col justify-center items-center gap-8 text-lg z-10">
           <Link href="/" className="hover:border-b-2 hover:border-white">
