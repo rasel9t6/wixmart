@@ -1,8 +1,8 @@
-import { wixClientServer } from '@/lib/wixClientServer';
 import { products } from '@wix/stores';
 import Image from 'next/image';
 import Link from 'next/link';
 import DOMPurify from 'isomorphic-dompurify';
+import { wixClientServer } from '@/app/api/wixServer/route';
 export default async function ProductList({
   categoryId,
   limit,

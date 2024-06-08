@@ -3,8 +3,6 @@ import ProductList from '@/components/ProductList';
 import Skeleton from '@/components/Skeleton';
 import Slider from '@/components/Slider';
 
-import { useWixClient } from '@/hooks/useWixClient';
-import { wixClientServer } from '@/lib/wixClientServer';
 import { Suspense } from 'react';
 
 export default async function HomePage() {
