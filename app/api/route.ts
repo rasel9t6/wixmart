@@ -1,4 +1,5 @@
-import { OAuthStrategy, createClient } from '@wix/sdk';
+// wixClientServer.ts
+import { createClient, OAuthStrategy } from '@wix/sdk';
 import { collections, products } from '@wix/stores';
 import { cookies } from 'next/headers';
 
@@ -8,8 +9,9 @@ export async function wixClientServer() {
     const cookieStore = cookies();
     refreshToken = JSON.parse(cookieStore.get('refreshToken')?.value || '{}');
   } catch (error) {
-    console.error(error);
+    console.error('Failed to get refreshToken:', error);
   }
+
   const wixClient = createClient({
     modules: {
       products,
@@ -23,5 +25,6 @@ export async function wixClientServer() {
       },
     }),
   });
+
   return wixClient;
 }

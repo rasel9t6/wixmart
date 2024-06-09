@@ -1,4 +1,4 @@
-import { wixClientServer } from '@/lib/wixClientServer';
+import { wixClientServer } from '@/app/api/route';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -16,7 +16,7 @@ export default async function CategoryList() {
           >
             <div className='relative bg-slate-100 w-full h-96'>
               <Image
-                src={category.media?.mainMedia?.image?.url || '/product.png'}
+                src={category.media?.mainMedia?.image?.url || '/cart.png'}
                 alt=''
                 fill
                 sizes='20vw'

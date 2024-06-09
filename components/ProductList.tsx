@@ -1,14 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { products } from '@wix/stores';
 import Image from 'next/image';
 import Link from 'next/link';
 import DOMPurify from 'isomorphic-dompurify';
-import { wixClientServer } from '@/app/api/wixServer/route';
+import { wixClientServer } from '@/app/api/route';
 export default async function ProductList({
   categoryId,
   limit,
+  searchParams,
 }: {
   categoryId: string;
   limit?: number;
+  searchParams?: any;
 }) {
   const wixClient = await wixClientServer();
   const res = await wixClient.products
