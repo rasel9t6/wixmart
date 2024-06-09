@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { wixClientServer } from '@/app/api/route';
 import Filter from '@/components/Filter';
 import ProductList from '@/components/ProductList';
@@ -41,8 +42,7 @@ export default async function ListPage({
       <Filter />
       {/* PRODUCTS */}
       <h1 className='mt-12 text-xl font-semibold'>
-        {/* {cat?.collection?.name} For You! */}
-        For you
+        {cat?.collection?.name} For You!
       </h1>
       <Suspense fallback={<Skeleton />}>
         <ProductList

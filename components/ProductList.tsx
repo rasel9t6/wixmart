@@ -4,6 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import DOMPurify from 'isomorphic-dompurify';
 import { wixClientServer } from '@/app/api/route';
+import Pagination from './Pagination';
+
 export default async function ProductList({
   categoryId,
   limit,
@@ -13,13 +15,36 @@ export default async function ProductList({
   limit?: number;
   searchParams?: any;
 }) {
+  const PRODUCT_PER_PAGE = 8;
   const wixClient = await wixClientServer();
-  const res = await wixClient.products
+  const productQuery = wixClient.products
     .queryProducts()
+    .startsWith('name', searchParams?.name || '')
     .eq('collectionIds', categoryId)
+    .hasSome(
+      'productType',
+      searchParams?.type ? [searchParams.type] : ['physical', 'digital']
+    )
+    .gt('priceData.price', searchParams?.min || 0)
+    .lt('priceData.price', searchParams?.max || 999999)
     .limit(limit || 20)
-    .find();
+    .skip(
+      searchParams?.page
+        ? parseInt(searchParams.page) * (limit || PRODUCT_PER_PAGE)
+        : 0
+    );
+ if (searchParams?.sort) {
+   const [sortType, sortBy] = searchParams.sort.split(' ');
 
+   if (sortType === 'asc') {
+     productQuery.ascending(sortBy);
+   }
+   if (sortType === 'desc') {
+     productQuery.descending(sortBy);
+   }
+ }
+
+ const res = await productQuery.find();
   return (
     <div className='mt-12 flex gap-x-8 justify-between flex-wrap'>
       {res.items.map((product: products.Product) => (
@@ -65,6 +90,13 @@ export default async function ProductList({
           </button>
         </Link>
       ))}
+      {searchParams?.cat || searchParams?.name ? (
+        <Pagination
+          currentPage={res.currentPage || 0}
+          hasPrev={res.hasPrev()}
+          hasNext={res.hasNext()}
+        />
+      ) : null}
     </div>
   );
 }
