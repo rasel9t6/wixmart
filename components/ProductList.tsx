@@ -45,6 +45,7 @@ export default async function ProductList({
   }
 
   const res = await productQuery.find();
+  console.log(res.items.map((product) => product.name));
   return (
     <div className='mt-12 flex flex-wrap justify-between gap-x-8'>
       {res.items.map((product: products.Product) => (

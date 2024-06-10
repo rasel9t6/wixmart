@@ -195,7 +195,7 @@ export default function LoginPage() {
           </div>
         )}
         <button
-          className='bg-lama rounded-md p-2 text-white disabled:cursor-not-allowed disabled:bg-pink-200'
+          className='bg-lama rounded-md bg-redis p-2 text-white disabled:cursor-not-allowed disabled:bg-pink-200'
           disabled={isLoading}
         >
           {isLoading ? 'Loading...' : buttonTitle}

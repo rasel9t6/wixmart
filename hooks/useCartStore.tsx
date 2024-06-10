@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// import { create } from 'zustand';
+import { WixClientType } from '@/context/WixContext';
+import { create } from 'zustand';
 import { currentCart } from '@wix/ecom';
-import { WixClientType } from '@/context/wixContext';
-
 type CartState = {
   cart: currentCart.Cart;
   isLoading: boolean;

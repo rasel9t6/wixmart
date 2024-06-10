@@ -6,7 +6,7 @@ import ProductImages from '@/components/ProductImages';
 import Reviews from '@/components/Reviews';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
-
+import DOMPurify from 'isomorphic-dompurify';
 export default async function SinglePage({
   params,
 }: {
@@ -29,10 +29,14 @@ export default async function SinglePage({
       </div>
       {/* TEXTS */}
       <div className='flex w-full flex-col gap-6 lg:w-1/2'>
-        <h1 className='text-4xl font-medium'>Product Name</h1>
-        <p className='text-gray-500'>Description</p>
+        <h1 className='text-4xl font-medium'>{product.name}</h1>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(product.description || ''),
+          }}
+          className='text-gray-500'
+        ></div>
         <div className='h-[2px] bg-gray-100' />
-        <h2 className='text-2xl font-medium'>Price</h2>
         {product.price?.price === product.price?.discountedPrice ? (
           <h2 className='text-2xl font-medium'>${product.price?.price}</h2>
         ) : (
@@ -66,15 +70,19 @@ export default async function SinglePage({
             key={section.title}
           >
             <h4 className='mb-4 font-medium'>{section.title}</h4>
-            <p>{section.description}</p>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(section.description || ''),
+              }}
+            ></div>
           </div>
         ))}
         <div className='h-[2px] bg-gray-100' />
         {/* REVIEWS */}
         <h1 className='text-2xl'>User Reviews</h1>
-        <Suspense fallback='Loading...'>
+        {/* <Suspense fallback='Loading...'>
           <Reviews productId={product._id!} />
-        </Suspense>
+        </Suspense> */}
       </div>
     </div>
   );
