@@ -2,8 +2,8 @@ import Link from 'next/link';
 import Menu from './Menu';
 import Logo from './Logo';
 import SearchBar from './SearchBar';
-import NavIcons from './NavIcons';
-
+import dynamic from 'next/dynamic';
+const NavIcons = dynamic(() => import('./NavIcons'), { ssr: false });
 export default function Navbar() {
   return (
     <nav className='relative h-20 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64'>
