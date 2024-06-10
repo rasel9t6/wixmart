@@ -6,15 +6,15 @@ export default async function CategoryList() {
   const wixClient = await wixClientServer();
   const catagories = await wixClient.collections.queryCollections().find();
   return (
-    <div className='px-4 overflow-x-scroll scrollbar-hide'>
+    <div className='scrollbar-hide overflow-x-scroll px-4'>
       <div className='flex gap-4 md:gap-8'>
         {catagories.items.map((category) => (
           <Link
             key={category._id}
             href={`/list?cat=${category.slug}`}
-            className='flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 xl:w-1/6'
+            className='w-full flex-shrink-0 sm:w-1/2 lg:w-1/4 xl:w-1/6'
           >
-            <div className='relative bg-slate-100 w-full h-96'>
+            <div className='relative h-96 w-full bg-slate-100'>
               <Image
                 src={category.media?.mainMedia?.image?.url || '/cart.png'}
                 alt=''
@@ -23,7 +23,7 @@ export default async function CategoryList() {
                 className='object-cover'
               />
             </div>
-            <h1 className='mt-8 font-light text-xl tracking-wide'>
+            <h1 className='mt-8 text-xl font-light tracking-wide'>
               {category.name}
             </h1>
           </Link>

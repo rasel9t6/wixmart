@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { slides } from "@/utils";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { slides } from '@/utils';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function Slider() {
   const [current, setCurrent] = useState(0);
@@ -15,54 +15,54 @@ export default function Slider() {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="h-[calc(100vh-80px)] overflow-hidden">
+    <div className='h-[calc(100vh-80px)] overflow-hidden'>
       <div
-        className="w-max h-full flex transition-all ease-in-out duration-1000"
+        className='flex h-full w-max transition-all duration-1000 ease-in-out'
         style={{ transform: `translateX(-${current * 100}vw)` }}
       >
         {slides.map((slide) => (
           <div
-            className={`${slide.bg}  w-screen h-full flex flex-col gap-16 xl:flex-row`}
+            className={`${slide.bg} flex h-full w-screen flex-col gap-16 xl:flex-row`}
             key={slide.id}
           >
             {/* TEXT CONTAINER */}
-            <div className="h-1/2 xl:w-1/2 xl:h-full flex flex-col items-center justify-center gap-8 2xl:gap-12 text-center">
-              <h2 className="text-xl lg:text-3xl 2xl:text-5xl">
+            <div className='flex h-1/2 flex-col items-center justify-center gap-8 text-center xl:h-full xl:w-1/2 2xl:gap-12'>
+              <h2 className='text-xl lg:text-3xl 2xl:text-5xl'>
                 {slide.description}
               </h2>
-              <h1 className="text-5xl lg:text-6xl 2xl:text-8xl font-semibold">
+              <h1 className='text-5xl font-semibold lg:text-6xl 2xl:text-8xl'>
                 {slide.title}
               </h1>
               <Link href={slide.url}>
-                <button className="rounded-md bg-black text-white py-3 px-4 ">
+                <button className='rounded-md bg-black px-4 py-3 text-white'>
                   SHOP NOW
                 </button>
               </Link>
             </div>
             {/* IMAGE CONTAINER */}
-            <div className="h-1/2 xl:w-1/2 xl:h-full relative">
+            <div className='relative h-1/2 xl:h-full xl:w-1/2'>
               <Image
                 src={slide.img}
-                alt=""
+                alt=''
                 fill
-                sizes="100%"
-                className="object-cover"
+                sizes='100%'
+                className='object-cover'
               />
             </div>
           </div>
         ))}
       </div>
-      <div className="absolute m-auto left-1/2 bottom-8 flex gap-4">
+      <div className='absolute bottom-8 left-1/2 m-auto flex gap-4'>
         {slides.map((slide, index) => (
           <div
-            className={`w-3 h-3  rounded-full ring-1 ring-gray-600 cursor-pointer flex items-center justify-center ${
-              current === index ? "scale-150" : ""
+            className={`flex h-3 w-3 cursor-pointer items-center justify-center rounded-full ring-1 ring-gray-600 ${
+              current === index ? 'scale-150' : ''
             }`}
             key={slide.id}
             onClick={() => setCurrent(index)}
           >
             {current === index && (
-              <div className="w-[6px] h-[6px] bg-gray-600 rounded-full"></div>
+              <div className='h-[6px] w-[6px] rounded-full bg-gray-600'></div>
             )}
           </div>
         ))}

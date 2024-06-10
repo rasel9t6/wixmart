@@ -72,7 +72,7 @@ export default function CustomizeProducts({
 
               return option.name === 'Color' ? (
                 <li
-                  className='w-8 h-8 rounded-full ring-1 ring-gray-300 relative'
+                  className='relative h-8 w-8 rounded-full ring-1 ring-gray-300'
                   style={{
                     backgroundColor: choice.value,
                     cursor: disabled ? 'not-allowed' : 'pointer',
@@ -81,15 +81,15 @@ export default function CustomizeProducts({
                   key={choice.description}
                 >
                   {selected && (
-                    <div className='absolute w-10 h-10 rounded-full ring-2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2' />
+                    <div className='absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-1/2 transform rounded-full ring-2' />
                   )}
                   {disabled && (
-                    <div className='absolute w-10 h-[2px] bg-red-400 rotate-45 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2' />
+                    <div className='absolute left-1/2 top-1/2 h-[2px] w-10 -translate-x-1/2 -translate-y-1/2 rotate-45 transform bg-red-400' />
                   )}
                 </li>
               ) : (
                 <li
-                  className='ring-1 ring-lama text-lama rounded-md py-1 px-4 text-sm'
+                  className='ring-lama text-lama rounded-md px-4 py-1 text-sm ring-1'
                   style={{
                     cursor: disabled ? 'not-allowed' : 'pointer',
                     backgroundColor: selected

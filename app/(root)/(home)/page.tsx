@@ -38,7 +38,7 @@ export default async function HomePage() {
         </Suspense>
       </div>
       <div className='mt-24'>
-        <h1 className='text-2xl px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 mb-12'>
+        <h1 className='mb-12 px-4 text-2xl md:px-8 lg:px-16 xl:px-32 2xl:px-64'>
           Categories
         </h1>
         <Suspense fallback={<Skeleton />}>

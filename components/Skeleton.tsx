@@ -1,49 +1,49 @@
 export default function Skeleton() {
   return (
-    <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap animate-pulse ">
-      <div className="w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]">
-        <div className="w-full h-80 bg-gray-100 rounded-md" />
-        <div className="w-full flex justify-between ">
-          <div className="w-36 h-8 bg-gray-100 rounded-md" />
-          <div className="w-16 h-8 bg-gray-100 rounded-md  ml-auto" />
-          <div className="" />
+    <div className='mt-12 flex animate-pulse flex-wrap justify-between gap-x-8 gap-y-16'>
+      <div className='flex w-full flex-col gap-4 sm:w-[45%] lg:w-[22%]'>
+        <div className='h-80 w-full rounded-md bg-gray-100' />
+        <div className='flex w-full justify-between'>
+          <div className='h-8 w-36 rounded-md bg-gray-100' />
+          <div className='ml-auto h-8 w-16 rounded-md bg-gray-100' />
+          <div className='' />
         </div>
-        <div className="w-full h-4 bg-gray-100 rounded-md " />
-        <div className="w-1/2 h-4 bg-gray-100 rounded-md " />
-        <div className="w-1/2 h-12 bg-gray-100 rounded-2xl " />
+        <div className='h-4 w-full rounded-md bg-gray-100' />
+        <div className='h-4 w-1/2 rounded-md bg-gray-100' />
+        <div className='h-12 w-1/2 rounded-2xl bg-gray-100' />
       </div>
-      <div className="w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]">
-        <div className="w-full h-80 bg-gray-100 rounded-md" />
-        <div className="w-full flex justify-between ">
-          <div className="w-36 h-8 bg-gray-100 rounded-md" />
-          <div className="w-16 h-8 bg-gray-100 rounded-md  ml-auto" />
-          <div className="" />
+      <div className='flex w-full flex-col gap-4 sm:w-[45%] lg:w-[22%]'>
+        <div className='h-80 w-full rounded-md bg-gray-100' />
+        <div className='flex w-full justify-between'>
+          <div className='h-8 w-36 rounded-md bg-gray-100' />
+          <div className='ml-auto h-8 w-16 rounded-md bg-gray-100' />
+          <div className='' />
         </div>
-        <div className="w-full h-4 bg-gray-100 rounded-md " />
-        <div className="w-1/2 h-4 bg-gray-100 rounded-md " />
-        <div className="w-1/2 h-12 bg-gray-100 rounded-2xl " />
+        <div className='h-4 w-full rounded-md bg-gray-100' />
+        <div className='h-4 w-1/2 rounded-md bg-gray-100' />
+        <div className='h-12 w-1/2 rounded-2xl bg-gray-100' />
       </div>
-      <div className="w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]">
-        <div className="w-full h-80 bg-gray-100 rounded-md" />
-        <div className="w-full flex justify-between ">
-          <div className="w-36 h-8 bg-gray-100 rounded-md" />
-          <div className="w-16 h-8 bg-gray-100 rounded-md  ml-auto" />
-          <div className="" />
+      <div className='flex w-full flex-col gap-4 sm:w-[45%] lg:w-[22%]'>
+        <div className='h-80 w-full rounded-md bg-gray-100' />
+        <div className='flex w-full justify-between'>
+          <div className='h-8 w-36 rounded-md bg-gray-100' />
+          <div className='ml-auto h-8 w-16 rounded-md bg-gray-100' />
+          <div className='' />
         </div>
-        <div className="w-full h-4 bg-gray-100 rounded-md " />
-        <div className="w-1/2 h-4 bg-gray-100 rounded-md " />
-        <div className="w-1/2 h-12 bg-gray-100 rounded-2xl " />
+        <div className='h-4 w-full rounded-md bg-gray-100' />
+        <div className='h-4 w-1/2 rounded-md bg-gray-100' />
+        <div className='h-12 w-1/2 rounded-2xl bg-gray-100' />
       </div>
-      <div className="w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]">
-        <div className="w-full h-80 bg-gray-100 rounded-md" />
-        <div className="w-full flex justify-between ">
-          <div className="w-36 h-8 bg-gray-100 rounded-md" />
-          <div className="w-16 h-8 bg-gray-100 rounded-md  ml-auto" />
-          <div className="" />
+      <div className='flex w-full flex-col gap-4 sm:w-[45%] lg:w-[22%]'>
+        <div className='h-80 w-full rounded-md bg-gray-100' />
+        <div className='flex w-full justify-between'>
+          <div className='h-8 w-36 rounded-md bg-gray-100' />
+          <div className='ml-auto h-8 w-16 rounded-md bg-gray-100' />
+          <div className='' />
         </div>
-        <div className="w-full h-4 bg-gray-100 rounded-md " />
-        <div className="w-1/2 h-4 bg-gray-100 rounded-md " />
-        <div className="w-1/2 h-12 bg-gray-100 rounded-2xl " />
+        <div className='h-4 w-full rounded-md bg-gray-100' />
+        <div className='h-4 w-1/2 rounded-md bg-gray-100' />
+        <div className='h-12 w-1/2 rounded-2xl bg-gray-100' />
       </div>
     </div>
   );

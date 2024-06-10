@@ -20,16 +20,16 @@ export default function Pagination({
     replace(`${pathname}?${params.toString()}`);
   };
   return (
-    <div className='mt-12 flex justify-between w-full'>
+    <div className='mt-12 flex w-full justify-between'>
       <button
-        className='rounded-md bg-lama text-white p-2 text-sm w-24 cursor-pointer disabled:cursor-not-allowed disabled:bg-pink-200'
+        className='bg-lama w-24 cursor-pointer rounded-md p-2 text-sm text-white disabled:cursor-not-allowed disabled:bg-pink-200'
         disabled={!hasPrev}
         onClick={() => createPageUrl(currentPage - 1)}
       >
         Previous
       </button>
       <button
-        className='rounded-md bg-lama text-white p-2 text-sm w-24 cursor-pointer disabled:cursor-not-allowed disabled:bg-pink-200'
+        className='bg-lama w-24 cursor-pointer rounded-md p-2 text-sm text-white disabled:cursor-not-allowed disabled:bg-pink-200'
         disabled={!hasNext}
         onClick={() => createPageUrl(currentPage + 1)}
       >
