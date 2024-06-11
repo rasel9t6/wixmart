@@ -75,7 +75,7 @@ export default function NavIcons() {
           width={22}
           height={22}
         />
-        <div className='bg-lama absolute -right-4 -top-4 flex h-6 w-6 items-center justify-center rounded-full text-sm text-white'>
+        <div className='absolute -right-4 -top-4 flex h-6 w-6 items-center justify-center rounded-full bg-redis text-sm text-white'>
           {counter}
         </div>
       </div>
