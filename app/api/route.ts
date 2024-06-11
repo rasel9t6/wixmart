@@ -2,6 +2,7 @@
 import { createClient, OAuthStrategy } from '@wix/sdk';
 import { collections, products } from '@wix/stores';
 import { orders } from '@wix/ecom';
+import { members } from '@wix/members';
 import { cookies } from 'next/headers';
 
 export async function wixClientServer() {
@@ -18,6 +19,7 @@ export async function wixClientServer() {
       products,
       collections,
       orders,
+      members,
     },
     auth: OAuthStrategy({
       clientId: process.env.NEXT_PUBLIC_WIX_CLIENT_ID!,

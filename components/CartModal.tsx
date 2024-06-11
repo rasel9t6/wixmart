@@ -105,7 +105,9 @@ export default function CartModal() {
           <div className=''>
             <div className='flex items-center justify-between font-semibold'>
               <span className=''>Subtotal</span>
-              <span className=''>${cart.subtotal.amount}</span>
+              {cart.subtotal && (
+                <span className=''>${cart.subtotal.amount}</span>
+              )}
             </div>
             <p className='mb-4 mt-2 text-sm text-gray-500'>
               Shipping and taxes calculated at checkout.

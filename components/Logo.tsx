@@ -11,6 +11,7 @@ export default function Logo() {
           className=''
           width={80}
           height={80}
+          priority
         />
         {/* <Image
               alt='Wave mart log'
