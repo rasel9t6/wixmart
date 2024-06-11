@@ -96,7 +96,7 @@ export default function Footer() {
               placeholder='Email address'
               className='w-3/4 p-4'
             />
-            <button className='bg-lama w-1/4 text-white'>JOIN</button>
+            <button className='w-1/4 bg-redis text-white'>JOIN</button>
           </div>
           <span className='font-semibold'>Secure Payments</span>
           <div className='flex justify-between'>

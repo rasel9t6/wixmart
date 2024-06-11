@@ -25,7 +25,7 @@ export default async function ListPage({
             Grab up to 50% off on
             <br /> Selected Products
           </h1>
-          <button className='bg-lama w-max rounded-3xl px-5 py-3 text-sm text-white'>
+          <button className='w-max rounded-3xl bg-redis px-5 py-3 text-sm text-white'>
             Buy Now
           </button>
         </div>

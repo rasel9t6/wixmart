@@ -22,14 +22,14 @@ export default function Pagination({
   return (
     <div className='mt-12 flex w-full justify-between'>
       <button
-        className='bg-lama w-24 cursor-pointer rounded-md p-2 text-sm text-white disabled:cursor-not-allowed disabled:bg-pink-200'
+        className='w-24 cursor-pointer rounded-md bg-redis p-2 text-sm text-white disabled:cursor-not-allowed disabled:bg-pink-200'
         disabled={!hasPrev}
         onClick={() => createPageUrl(currentPage - 1)}
       >
         Previous
       </button>
       <button
-        className='bg-lama w-24 cursor-pointer rounded-md p-2 text-sm text-white disabled:cursor-not-allowed disabled:bg-pink-200'
+        className='w-24 cursor-pointer rounded-md bg-redis p-2 text-sm text-white disabled:cursor-not-allowed disabled:bg-pink-200'
         disabled={!hasNext}
         onClick={() => createPageUrl(currentPage + 1)}
       >

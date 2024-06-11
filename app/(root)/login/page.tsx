@@ -1,9 +1,10 @@
 'use client';
+import { useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import { useWixClient } from '@/hooks/useWixClient';
 import { LoginState } from '@wix/sdk';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 import Cookies from 'js-cookie';
+
 enum MODE {
   LOGIN = 'LOGIN',
   REGISTER = 'REGISTER',
@@ -14,13 +15,6 @@ enum MODE {
 export default function LoginPage() {
   const wixClient = useWixClient();
   const router = useRouter();
-
-  const isLoggedIn = wixClient.auth.loggedIn();
-
-  if (isLoggedIn) {
-    router.push('/');
-  }
-
   const [mode, setMode] = useState(MODE.LOGIN);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -30,23 +24,30 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
 
-  const formTitle =
-    mode === MODE.LOGIN
-      ? 'Log in'
-      : mode === MODE.REGISTER
-        ? 'Register'
-        : mode === MODE.RESET_PASSWORD
-          ? 'Reset Your Password'
-          : 'Verify Your Email';
+  // Use effect to check if the user is already logged in
+  useEffect(() => {
+    if (wixClient.auth.loggedIn()) {
+      router.push('/'); // Redirect to home page if logged in
+    }
+  }, [wixClient, router]);
 
-  const buttonTitle =
-    mode === MODE.LOGIN
-      ? 'Login'
-      : mode === MODE.REGISTER
-        ? 'Register'
-        : mode === MODE.RESET_PASSWORD
-          ? 'Reset'
-          : 'Verify';
+  // Mapping form titles to modes
+  const formTitle = {
+    [MODE.LOGIN]: 'Log in',
+    [MODE.REGISTER]: 'Register',
+    [MODE.RESET_PASSWORD]: 'Reset Your Password',
+    [MODE.EMAIL_VERIFICATION]: 'Verify Your Email',
+  }[mode];
+
+  // Mapping button titles to modes
+  const buttonTitle = {
+    [MODE.LOGIN]: 'Login',
+    [MODE.REGISTER]: 'Register',
+    [MODE.RESET_PASSWORD]: 'Reset',
+    [MODE.EMAIL_VERIFICATION]: 'Verify',
+  }[mode];
+
+  // Handle form submission based on mode
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -57,10 +58,7 @@ export default function LoginPage() {
 
       switch (mode) {
         case MODE.LOGIN:
-          response = await wixClient.auth.login({
-            email,
-            password,
-          });
+          response = await wixClient.auth.login({ email, password });
           break;
         case MODE.REGISTER:
           response = await wixClient.auth.register({
@@ -85,53 +83,52 @@ export default function LoginPage() {
           break;
       }
 
-      switch (response?.loginState) {
-        case LoginState.SUCCESS: {
-          setMessage('Successful! You are being redirected.');
-          const tokens = await wixClient.auth.getMemberTokensForDirectLogin(
-            response.data.sessionToken!
-          );
-
-          Cookies.set('refreshToken', JSON.stringify(tokens.refreshToken), {
-            expires: 2,
-          });
-          wixClient.auth.setTokens(tokens);
-          router.push('/');
-          break;
-        }
-        case LoginState.FAILURE:
-          if (
-            response.errorCode === 'invalidEmail' ||
-            response.errorCode === 'invalidPassword'
-          ) {
-            setError('Invalid email or password!');
-          } else if (response.errorCode === 'emailAlreadyExists') {
-            setError('Email already exists!');
-          } else if (response.errorCode === 'resetPassword') {
-            setError('You need to reset your password!');
-          } else {
-            setError('Something went wrong!');
+      if (response) {
+        switch (response.loginState) {
+          case LoginState.SUCCESS: {
+            setMessage('Successful! You are being redirected.');
+            const tokens = await wixClient.auth.getMemberTokensForDirectLogin(
+              response.data.sessionToken!
+            );
+            Cookies.set('refreshToken', JSON.stringify(tokens.refreshToken), {
+              expires: 2,
+            });
+            wixClient.auth.setTokens(tokens);
+            router.push('/');
+            break;
           }
-          break;
-
-        case LoginState.EMAIL_VERIFICATION_REQUIRED:
-          setMode(MODE.EMAIL_VERIFICATION);
-          break;
-
-        case LoginState.OWNER_APPROVAL_REQUIRED:
-          setMessage('Your account is pending approval');
-          break;
-
-        default:
-          break;
+          case LoginState.FAILURE:
+            if (
+              response.errorCode === 'invalidEmail' ||
+              response.errorCode === 'invalidPassword'
+            ) {
+              setError('Invalid email or password!');
+            } else if (response.errorCode === 'emailAlreadyExists') {
+              setError('Email already exists!');
+            } else if (response.errorCode === 'resetPassword') {
+              setError('You need to reset your password!');
+            } else {
+              setError('Something went wrong!');
+            }
+            break;
+          case LoginState.EMAIL_VERIFICATION_REQUIRED:
+            setMode(MODE.EMAIL_VERIFICATION);
+            break;
+          case LoginState.OWNER_APPROVAL_REQUIRED:
+            setMessage('Your account is pending approval');
+            break;
+          default:
+            break;
+        }
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
       setError('Something went wrong!');
     } finally {
       setIsLoading(false);
     }
   };
+
   return (
     <div className='flex h-[calc(100vh-80px)] items-center justify-center px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64'>
       <form
@@ -139,7 +136,7 @@ export default function LoginPage() {
         onSubmit={handleSubmit}
       >
         <h1 className='text-2xl font-semibold'>{formTitle}</h1>
-        {mode === MODE.REGISTER ? (
+        {mode === MODE.REGISTER && (
           <div className='flex flex-col gap-2'>
             <label className='text-sm text-gray-700'>Username</label>
             <input
@@ -150,7 +147,7 @@ export default function LoginPage() {
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-        ) : null}
+        )}
         {mode !== MODE.EMAIL_VERIFICATION ? (
           <div className='flex flex-col gap-2'>
             <label className='text-sm text-gray-700'>E-mail</label>
@@ -174,7 +171,7 @@ export default function LoginPage() {
             />
           </div>
         )}
-        {mode === MODE.LOGIN || mode === MODE.REGISTER ? (
+        {(mode === MODE.LOGIN || mode === MODE.REGISTER) && (
           <div className='flex flex-col gap-2'>
             <label className='text-sm text-gray-700'>Password</label>
             <input
@@ -185,7 +182,7 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-        ) : null}
+        )}
         {mode === MODE.LOGIN && (
           <div
             className='cursor-pointer text-sm underline'
@@ -195,7 +192,7 @@ export default function LoginPage() {
           </div>
         )}
         <button
-          className='bg-lama rounded-md bg-redis p-2 text-white disabled:cursor-not-allowed disabled:bg-pink-200'
+          className='rounded-md bg-redis p-2 text-white disabled:cursor-not-allowed disabled:bg-pink-200'
           disabled={isLoading}
         >
           {isLoading ? 'Loading...' : buttonTitle}
@@ -214,7 +211,7 @@ export default function LoginPage() {
             className='cursor-pointer text-sm underline'
             onClick={() => setMode(MODE.LOGIN)}
           >
-            Have and account?
+            Have an account?
           </div>
         )}
         {mode === MODE.RESET_PASSWORD && (

@@ -1,9 +1,9 @@
 import { members } from '@wix/members';
 import Link from 'next/link';
 import { format } from 'timeago.js';
-import { wixClientServer } from '../../lib/wixClientServer';
 import UpdateButton from '@/components/UpdateButton';
 import { updateUser } from '@/lib/action';
+import { wixClientServer } from '../../lib/wixClientServer';
 
 export default async function page() {
   const wixClient = await wixClientServer();
