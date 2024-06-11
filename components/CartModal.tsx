@@ -5,6 +5,7 @@ import { useCartStore } from '@/hooks/useCartStore';
 import { useWixClient } from '@/hooks/useWixClient';
 import { currentCart } from '@wix/ecom';
 import { media as wixMedia } from '@wix/sdk';
+
 import Image from 'next/image';
 
 export default function CartModal() {
@@ -44,7 +45,7 @@ export default function CartModal() {
           {/* LIST */}
           <div className='flex flex-col gap-8'>
             {/* ITEM */}
-            {cart.lineItems.map((item:any) => (
+            {cart.lineItems.map((item: any) => (
               <div
                 className='flex gap-4'
                 key={item._id}
