@@ -1,4 +1,3 @@
-
 import { createClient, OAuthStrategy } from '@wix/sdk';
 import { collections, products } from '@wix/stores';
 import { orders } from '@wix/ecom';

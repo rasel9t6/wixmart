@@ -1,7 +1,6 @@
-
-import { wixClientServer } from "@/lib/wixClientServer";
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import { wixClientServer } from '@/lib/wixClientServer';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 export default async function page({ params }: { params: { id: string } }) {
   const id = params.id;

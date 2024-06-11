@@ -47,6 +47,7 @@ export default function Slider() {
                 fill
                 sizes='100%'
                 className='object-cover'
+                priority
               />
             </div>
           </div>
