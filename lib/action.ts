@@ -1,6 +1,6 @@
 'use server';
 
-import { wixClientServer } from './route';
+import { wixClientServer } from './wixClientServer';
 
 export const updateUser = async (formData: FormData) => {
   const wixClient = await wixClientServer();

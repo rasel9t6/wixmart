@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { wixClientServer } from '@/app/api/route';
+
 import Filter from '@/components/Filter';
 import ProductList from '@/components/ProductList';
 import Skeleton from '@/components/Skeleton';
+import { wixClientServer } from '@/lib/wixClientServer';
 import Image from 'next/image';
 import { Suspense } from 'react';
 

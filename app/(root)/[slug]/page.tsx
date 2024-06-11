@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { wixClientServer } from '@/app/api/route';
+
 import Add from '@/components/Add';
 import CustomizeProducts from '@/components/CustomizeProducts';
 import ProductImages from '@/components/ProductImages';
@@ -7,6 +7,7 @@ import Reviews from '@/components/Reviews';
 import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
 import DOMPurify from 'isomorphic-dompurify';
+import { wixClientServer } from '@/lib/wixClientServer';
 export default async function SinglePage({
   params,
 }: {

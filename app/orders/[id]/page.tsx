@@ -1,4 +1,5 @@
-import { wixClientServer } from "@/app/api/route";
+
+import { wixClientServer } from "@/lib/wixClientServer";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 

@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { products } from '@wix/stores';
 import Image from 'next/image';
 import Link from 'next/link';
 import DOMPurify from 'isomorphic-dompurify';
-import { wixClientServer } from '@/app/api/route';
+
 import Pagination from './Pagination';
+import { products } from '@wix/stores';
+import { wixClientServer } from '@/lib/wixClientServer';
 
 export default async function ProductList({
   categoryId,

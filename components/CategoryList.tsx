@@ -1,4 +1,5 @@
-import { wixClientServer } from '@/app/api/route';
+
+import { wixClientServer } from '@/lib/wixClientServer';
 import Image from 'next/image';
 import Link from 'next/link';
 
